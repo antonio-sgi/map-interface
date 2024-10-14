@@ -1,9 +1,11 @@
 package com.example;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -144,7 +146,7 @@ public class App {
         // Recorrer la coleccion personasGeneroEdad
         personasGeneroEdad.entrySet().stream().forEach(entry1 -> {
 
-        Genero genero = entry1.getKey();
+            Genero genero = entry1.getKey();
             System.out.println("Genero: " + genero);
 
             Map<Long, List<Persona>> entry2 = entry1.getValue();
@@ -164,7 +166,54 @@ public class App {
         });
 
 
+        /* Los mapas se trabajan con la clase HashMap que no permite ordenamiento, y al final
+         * si queremos ordenar las claves del mapa, se copia la coleccion a un TreeMap, que si
+         * permite ordenamiento.
+         */
 
+ /* Ejemplo # 2
+          
+          Punto 1.
+          Agregar nombres repetidos a la clase de Persona y obtener una coleccion que agrupe nombres
+          y sumatoria de los salarios de las personas que tienen el mismo nombre.
+
+          Punto 2.
+          Obtener una nueva coleccion que ordene las claves del mapa alfabeticamente, de la A a la Z.
+
+          Punto 3.
+          Obtener una nueva coleccion que ordene las claves del mapa en oreden
+          alfabetico inverso, de la Z a la A.
+         */
+        
+         // Rta al Punto 1. Bien por Ruben.
+        Map<String, Double> salariosPorNombre = personas.stream()
+                .collect(Collectors.groupingBy(Persona::getNombre,
+                        Collectors.summingDouble(Persona::getSalario)));
+
+        System.out.println("Salario por nombre sin ordenar");
+        System.out.println(salariosPorNombre);
+
+        // Punto 2.
+        Map<String, Double> salariosPorNombreOrdenado = new TreeMap<>();
+
+        System.out.println("Salarios por nombre ordenado alfabeticamente");
+        salariosPorNombreOrdenado.putAll(salariosPorNombre);
+
+        System.out.println(salariosPorNombreOrdenado);
+
+// Punto 3
+// Variante # 1
+        Map<String, Double> salariosPorNombreOrdenInverso = new TreeMap<>((nombre1, nombre2) -> nombre2.compareTo(nombre1));
+
+        System.out.println("Salarios Ordenados por Nombre en orden inverso");
+        salariosPorNombreOrdenInverso.putAll(salariosPorNombre);
+        System.out.println(salariosPorNombreOrdenInverso);
+
+// Variante # 2. Ivan
+        var salariosPorNombreOrdenadoInversamente = new TreeMap<>(Collections.reverseOrder());
+        System.out.println("Solucion de Ivan");
+        salariosPorNombreOrdenadoInversamente.putAll(salariosPorNombre);
+        System.out.println(salariosPorNombreOrdenadoInversamente);
 
     }
 }

@@ -19,7 +19,7 @@ public class FlatMapDemo {
         );
 
         listaDeLista.stream().flatMap(l -> l.stream()).forEach(System.out::println);
-        
+
         List<String> lista1 =  List.of("Ivan","Juan");
         List<String> lista2 =  List.of("Antonio");
         List<String> lista3 =  List.of("Ruben","Marcos");
@@ -28,6 +28,12 @@ public class FlatMapDemo {
 
         System.out.println("Flujo de listas aplanado por cortesia de flatMap");
         flujoDeListas.flatMap(l -> l.stream()).forEach(System.out::println);
+
+
+
+
+
+
 
     }
 

@@ -86,11 +86,34 @@ public class Persona implements Comparable<Persona>{
                 .salario(9500.50)
                 .build()
         );
+
+        personas.add(
+            Persona.builder()
+                .nombre("Marcos")
+                .primerApellido("Serrano")
+                .segundoApellido("Serrano")
+                .genero(Genero.HOMBRE)
+                .fechaNacimiento(LocalDate.of(1996, Month.APRIL, 23))
+                .salario(9500.50)
+                .build()
+        );
+
         personas.add(
             Persona.builder()
                 .nombre("Elli")
                 .primerApellido("Fdez")
                 .segundoApellido("Hdez")
+                .genero(Genero.MUJER)
+                .fechaNacimiento(LocalDate.of(2005, Month.SEPTEMBER,14))
+                .salario(3000.50)
+                .build()
+        );
+        
+        personas.add(
+            Persona.builder()
+                .nombre("Elli")
+                .primerApellido("Fdez")
+                .segundoApellido("Mtnez")
                 .genero(Genero.MUJER)
                 .fechaNacimiento(LocalDate.of(2005, Month.SEPTEMBER,14))
                 .salario(3000.50)
@@ -108,6 +131,16 @@ public class Persona implements Comparable<Persona>{
                 .build()
         );
 
+        personas.add(
+            Persona.builder()
+                .nombre("Paca")
+                .primerApellido("Mtnez")
+                .segundoApellido("Fdez")
+                .genero(Genero.MUJER)
+                .fechaNacimiento(LocalDate.of(2004, Month.JULY,14))
+                .salario(3000.50)
+                .build()
+        );
 
         return personas;
     }
